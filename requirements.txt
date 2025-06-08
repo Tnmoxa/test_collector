@@ -1,0 +1,6 @@
+yandex_tracker_client
+sqlalchemy[asyncio]
+alembic
+asyncpg
+psycopg2-binary
+apscheduler[asyncio]

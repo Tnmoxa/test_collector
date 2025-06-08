@@ -1,0 +1,13 @@
+services:
+  postgresql:
+    image: postgresql
+    build:
+      context: .
+      dockerfile: docker/postgres/Dockerfile
+    container_name: stat-collector-postgresql
+    command: postgres
+
+  parser:
+    build:
+      context: .
+      dockerfile: docker/collector/Dockerfile
