@@ -10,11 +10,10 @@ class Base(DeclarativeBase, MappedAsDataclass):
 class ReturnToWork(Base):
     __tablename__ = 'return_to_work'
 
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, init=False, index=True)
     queue: Mapped[str] = mapped_column(String)
     priority: Mapped[str] = mapped_column(String)
     type: Mapped[str] = mapped_column(String)
-    key: Mapped[str] = mapped_column(String)
+    key: Mapped[str] = mapped_column(String, primary_key=True)
     summary: Mapped[str] = mapped_column(String)
     assignee: Mapped[str] = mapped_column(String)
     status: Mapped[str] = mapped_column(String)

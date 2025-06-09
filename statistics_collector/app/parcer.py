@@ -1,19 +1,18 @@
-from statistics_collector.utils import save_stat_record, clear_table
-from datetime import datetime
 import asyncio
+from datetime import datetime
 
 from statistics_collector.database.models import ReturnToWork
 from statistics_collector.dependencies import client
+from statistics_collector.utils import save_stat_record, clear_table
 
 
 async def parse_stat():
-    queues = ["NWOCG"]
+    queues = ["NWOCG", "NWOF", "NWOB", "NWOCG", "NWOM", "ENGEEJL"]
 
     from_date = "2025-01-01"
     to_date = datetime.now().strftime("%Y-%m-%d")
 
     await clear_table(ReturnToWork)
-
 
     for queue in queues:
         print('Обрабатываю', queue)
@@ -51,6 +50,7 @@ async def parse_stat():
 
 def test():
     print('qweqweqwe')
+
 
 if __name__ == '__main__':
     asyncio.run(parse_stat())

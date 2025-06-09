@@ -4,6 +4,8 @@ import os
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from alembic.config import Config
 from alembic import command
+from apscheduler.triggers.cron import CronTrigger
+
 
 from statistics_collector.app.parcer import parse_stat
 
@@ -19,7 +21,7 @@ def run_migrations():
 async def main():
     run_migrations()
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(parse_stat, 'interval', minutes=1)
+    scheduler.add_job(parse_stat, CronTrigger(minute=0))
     scheduler.start()
 
     try:
